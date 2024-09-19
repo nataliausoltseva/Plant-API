@@ -1,0 +1,3 @@
+﻿@Plant-API_HostAddress = https://localhost:7072
+
+GET {{Plant-API_HostAddress}}/species
