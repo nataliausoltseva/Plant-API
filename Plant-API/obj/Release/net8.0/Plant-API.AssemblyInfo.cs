@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Plant-API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af3a25d2811d3d14b23fb969503d6a0119225ae6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Plant-API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Plant-API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

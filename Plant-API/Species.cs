@@ -5,13 +5,15 @@ public class Species
     public string? Rank { get; set; }
     public string ?Genus { get; set; }
     public string? Family { get; set; }
+    public string? Author { get; set; }
     public int Year { get; set; }
     public string? Bibliography { get; set; }
     public string? CommonName { get; set; }
     public string? FamilyCommonName { get; set; }
     public string? ImageUrl { get; set; }
+    public string? FlowerColor { get; set; }
     public bool FlowerConspicuous { get; set; }
-    public string?   FoliageColor { get; set; }
+    public string? FoliageColor { get; set; }
     public string? FoliageTexture { get; set; }
     public string? FruitColor { get; set; }
     public bool FruitConspicuous { get; set; }
@@ -28,9 +30,12 @@ public class Species
     public string? Light { get; set; }
     public string? SoilNutriments { get; set; }
     public string? SoilSalinity { get; set; }
+    public string? AnaerobicTolerance { get; set; }
     public float AnaerobicHumidity { get; set; }
     public float AverageHeightCm { get; set; }
+    public float MaximumHeightCm { get; set; }
     public float MinimumRootDepthCm { get; set; }
+    public float PhMaximum{ get; set; }
     public float PhMinimum { get; set; }
     public float PlantingDaysToHarvest { get; set; }
     public string? PlantingDescription { get; set; }
@@ -43,6 +48,7 @@ public class Species
     public string? UrlUsda { get; set; }
     public string? UrlTropicos { get; set; }
     public string? UrlPowo { get; set; }
+    public string? UrlTelaBotanica { get; set; }
     public string? UrlPlantnet { get; set; }
     public string? UrlGbif { get; set; }
     public string? UrlOpenfarm { get; set; }

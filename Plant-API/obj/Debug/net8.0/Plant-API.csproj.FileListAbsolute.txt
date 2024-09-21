@@ -35,3 +35,4 @@ C:\Development\Plant-API\Plant-API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagg
 C:\Development\Plant-API\Plant-API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Development\Plant-API\Plant-API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Development\Plant-API\Plant-API\obj\Debug\net8.0\Plant-API.MvcApplicationPartsAssemblyInfo.cs
+C:\Development\Plant-API\Plant-API\obj\Debug\net8.0\Plant-API.sourcelink.json
