@@ -88,41 +88,44 @@ public class DataImporter
 
                         Type type = species.GetType();
 
-                        var values = line.Split('\t');
-                        foreach (var item in headers)
+                        if (type != null)
                         {
-                            string value = API_HEADERS[item];
-                            int index = API_HEADERS.Keys.ToList().IndexOf(item);
-                            PropertyInfo field = type.GetProperty(value);
-
-                            if (field != null && index < values.Length)
+                            var values = line.Split('\t');
+                            foreach (var item in headers)
                             {
-                                if (item == "id")
+                                string value = API_HEADERS[item];
+                                int index = API_HEADERS.Keys.ToList().IndexOf(item);
+                                PropertyInfo field = type.GetProperty(value);
+
+                                if (field != null && index < values.Length)
                                 {
-                                    field.SetValue(species, rowsLines.Count + 1);
-                                }
-                                else
-                                {
-                                    switch (field.PropertyType)
+                                    if (item == "id")
                                     {
-                                        case Type t when field.PropertyType == typeof(bool):
-                                            field.SetValue(species, values[index] != "" ? true : false);
-                                            break;
-                                        case Type t when field.PropertyType == typeof(int):
-                                            field.SetValue(species, values[index] != "" ? Convert.ToInt32(values[index]) : 0);
-                                            break;
-                                        case Type t when field.PropertyType == typeof(double):
-                                            field.SetValue(species, values[index] != "" ? Convert.ToDouble(values[index]) : 0.00);
-                                            break;
-                                        default:
-                                            field.SetValue(species, values[index].ToString());
-                                            break;
+                                        field.SetValue(species, rowsLines.Count + 1);
                                     }
+                                    else
+                                    {
+                                        switch (field.PropertyType)
+                                        {
+                                            case Type t when field.PropertyType == typeof(bool):
+                                                field.SetValue(species, values[index] != "" ? true : false);
+                                                break;
+                                            case Type t when field.PropertyType == typeof(int):
+                                                field.SetValue(species, values[index] != "" ? Convert.ToInt32(values[index]) : 0);
+                                                break;
+                                            case Type t when field.PropertyType == typeof(double):
+                                                field.SetValue(species, values[index] != "" ? Convert.ToDouble(values[index]) : 0.00);
+                                                break;
+                                            default:
+                                                field.SetValue(species, values[index].ToString());
+                                                break;
+                                        }
+                                    }
+
+
                                 }
-
-
+                                headerCounter++;
                             }
-                            headerCounter++;
                         }
                         rowsLines.Add(species);
                     }
