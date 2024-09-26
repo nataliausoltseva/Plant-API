@@ -8,9 +8,14 @@ namespace Plant_API.Controllers
     public class SpeciesController(SpeciesDb context) : Controller
     {
         [HttpGet]
-        public async Task<ActionResult> GetSpeciesByPage([FromQuery] string? page)
+        public async Task<ActionResult> GetSpeciesByPage([FromQuery] int? page)
         {
-            var species = await context.Species.Take(10).ToListAsync();
+            int startIndex = (int)(page != null ? (page - 1) * 10 : 0);
+            var species = await context
+                .Species
+                .Skip(startIndex)
+                .Take(10)
+                .ToListAsync();
             return Ok(species);
         }
 
