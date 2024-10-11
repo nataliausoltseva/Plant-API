@@ -19,7 +19,7 @@ public class DataImporter
         { "family_common_name", "FamilyCommonName" },
         { "image_url", "ImageUrl" },
         { "flower_color", "FlowerColor" },
-        { "flower_conspicuous", "SlowerConsipicuous" },
+        { "flower_conspicuous", "SlowerConspicuous" },
         { "foliage_color", "FoliageColor" },
         { "foliage_texture", "FoliageTexture" },
         { "fruit_color", "FruitColor" },
@@ -66,7 +66,7 @@ public class DataImporter
     public List<Species> ImportCsv()
     {
         List<Species> rowsLines = new List<Species>();
-        using (var reader = new StreamReader(@"E:\Development\species.csv"))
+        using (var reader = new StreamReader(@"E:\Development\new-species.csv"))
         {
             Int32 counter = 0;
             string[] headers = [];
@@ -92,10 +92,10 @@ public class DataImporter
                         {
                             var values = line.Split('\t');
                             foreach (var item in headers)
-                            {
+                            {                               
                                 string value = API_HEADERS[item];
                                 int index = API_HEADERS.Keys.ToList().IndexOf(item);
-                                PropertyInfo field = type.GetProperty(value);
+                                PropertyInfo? field = type.GetProperty(value);
 
                                 if (field != null && index < values.Length)
                                 {
@@ -107,17 +107,21 @@ public class DataImporter
                                     {
                                         switch (field.PropertyType)
                                         {
-                                            case Type t when field.PropertyType == typeof(bool):
+                                            case Type t when field.PropertyType == typeof(String):
+                                                field.SetValue(species, values[index].ToString());
+                                                break;
+                                            case Type t when field.PropertyType == typeof(Nullable<Boolean>):
                                                 field.SetValue(species, values[index] != "" ? true : false);
                                                 break;
-                                            case Type t when field.PropertyType == typeof(int):
-                                                field.SetValue(species, values[index] != "" ? Convert.ToInt32(values[index]) : 0);
+                                            case Type t when field.PropertyType == typeof(Nullable<Int32>):
+                                                field.SetValue(species, values[index] != "" ? Convert.ToInt32(values[index]) : null);
                                                 break;
-                                            case Type t when field.PropertyType == typeof(double):
-                                                field.SetValue(species, values[index] != "" ? Convert.ToDouble(values[index]) : 0.00);
+                                            case Type t when field.PropertyType == typeof(Nullable<Double>):
+                                                field.SetValue(species, values[index] != "" ? Convert.ToDouble(values[index]) : null);
                                                 break;
                                             default:
-                                                field.SetValue(species, values[index].ToString());
+                                                var fieldValue = values[index];
+                                                field.SetValue(species, fieldValue == "" ? null : fieldValue.ToString());
                                                 break;
                                         }
                                     }
