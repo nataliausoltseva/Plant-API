@@ -92,7 +92,7 @@ public class DataImporter
                         {
                             var values = line.Split('\t');
                             foreach (var item in headers)
-                            {
+                            {                               
                                 string value = API_HEADERS[item];
                                 int index = API_HEADERS.Keys.ToList().IndexOf(item);
                                 PropertyInfo? field = type.GetProperty(value);
@@ -108,16 +108,16 @@ public class DataImporter
                                         switch (field.PropertyType)
                                         {
                                             case Type t when field.PropertyType == typeof(String):
-                                                field.SetValue(species, values[index] != "" ? values[index].ToString() : null);
+                                                field.SetValue(species, values[index].ToString());
                                                 break;
                                             case Type t when field.PropertyType == typeof(Nullable<Boolean>):
                                                 field.SetValue(species, values[index] != "" ? true : false);
                                                 break;
                                             case Type t when field.PropertyType == typeof(Nullable<Int32>):
-                                                field.SetValue(species, values[index] != "" ? Convert.ToInt32(values[index]) : 0);
+                                                field.SetValue(species, values[index] != "" ? Convert.ToInt32(values[index]) : null);
                                                 break;
                                             case Type t when field.PropertyType == typeof(Nullable<Double>):
-                                                field.SetValue(species, values[index] != "" ? Convert.ToDouble(values[index]) : 0);
+                                                field.SetValue(species, values[index] != "" ? Convert.ToDouble(values[index]) : null);
                                                 break;
                                             default:
                                                 var fieldValue = values[index];
