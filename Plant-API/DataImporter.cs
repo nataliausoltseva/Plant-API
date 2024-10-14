@@ -66,7 +66,7 @@ public class DataImporter
     public List<Species> ImportCsv()
     {
         List<Species> rowsLines = new List<Species>();
-        using (var reader = new StreamReader(@"E:\Development\new-species.csv"))
+        using (var reader = new StreamReader(@"C:\Development\new-species.csv"))
         {
             Int32 counter = 0;
             string[] headers = [];
@@ -111,7 +111,7 @@ public class DataImporter
                                                 field.SetValue(species, values[index].ToString());
                                                 break;
                                             case Type t when field.PropertyType == typeof(Nullable<Boolean>):
-                                                field.SetValue(species, values[index] != "" ? true : false);
+                                                field.SetValue(species, values[index] != "" ? values[index].ToLower() == "true" ? true : false : null);
                                                 break;
                                             case Type t when field.PropertyType == typeof(Nullable<Int32>):
                                                 field.SetValue(species, values[index] != "" ? Convert.ToInt32(values[index]) : null);

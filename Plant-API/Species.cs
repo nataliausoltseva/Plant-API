@@ -11,9 +11,9 @@ public class Species
     public String CommonName { get; set; }
     public String FamilyCommonName { get; set; }
     public String ImageUrl { get; set; }
-    public Boolean SlowerConspicuous { get; set; }
+    public Boolean? SlowerConspicuous { get; set; }
     public String FlowerColor { get; set; }
-    public Boolean FlowerConspicuous { get; set; }
+    public Boolean? FlowerConspicuous { get; set; }
     public String FoliageColor { get; set; }
     public String FoliageTexture { get; set; }
     public String FruitColor { get; set; }
